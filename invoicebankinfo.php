@@ -49,7 +49,7 @@ class InvoiceBankInfo extends Module
 
 		$this->displayName = $this->l('Invoice bank info');
 		$this->description = $this->l('Prints wire transfer info on the invoice.');
-		$this->ps_versions_compliancy = array('min' => '1.6', 'max' => '1.6.99.99');
+		$this->ps_versions_compliancy = array('min' => '1.5', 'max' => '1.6.99.99');
 		
 
 	}
