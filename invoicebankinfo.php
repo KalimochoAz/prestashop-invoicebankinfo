@@ -24,7 +24,9 @@
 *  International Registered Trademark & Property of PrestaShop SA
 */
 
-if (!defined('_PS_VERSION_')) exit;
+if (!defined('_PS_VERSION_')) {
+    exit;
+    }
 
 // BankWire Module have to be installed first
 
@@ -57,7 +59,9 @@ class InvoiceBankInfo extends Module
         if (!parent::install() ||
             !Configuration::updateValue('INVOICE_BANK_INFO', 'installed') ||
             !$this->registerHook('displayPDFInvoice') ||
-            !Configuration::updateValue('INVOICE_BANK_INFO_ENABLED', false)) return false;
+            !Configuration::updateValue('INVOICE_BANK_INFO_ENABLED', false)) { 
+	        return false;
+	        }
         return true;
     }
 
@@ -111,7 +115,7 @@ class InvoiceBankInfo extends Module
     
     // Function for basic field validation (present and neither empty nor only white space
     
-    public function isNullOrEmptyString($question) 
+    public function isNullOrEmptyString($question)
     {
         return (!isset($question) || trim($question)==='');
     }
@@ -146,7 +150,7 @@ class InvoiceBankInfo extends Module
                             'id' => 'enable_wiretransfer_info_0',
                             'value' => 0,
                             'label' => $this->l('Disabled')
-                        )     
+                        )
                     )
                 )
             ),
