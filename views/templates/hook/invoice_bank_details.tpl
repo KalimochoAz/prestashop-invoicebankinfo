@@ -19,8 +19,8 @@
     
 <table style="border: solid 1pt black; padding:0 10pt">
     <tr><td></td><td></td></tr>
-    <tr><td><b>{l s='Account Holder Name' mod='invoicebankinfo'}</b></td><td>{$bank_wire_account}</td></tr>
-    <tr><td><b>{l s='Account info' mod='invoicebankinfo'}</b></td><td>{$bank_wire_details}</td></tr>
-    <tr><td><b>{l s='Bank Address' mod='invoicebankinfo'}</b></td><td>{$bank_wire_address}</td></tr>
+    <tr><td><b>{l s='Account Holder Name' mod='invoicebankinfo'}</b></td><td>{$bank_wire_account|escape:'htmlall':'UTF-8'}</td></tr>
+    <tr><td><b>{l s='Account info' mod='invoicebankinfo'}</b></td><td>{$bank_wire_details|escape:'html':'UTF-8'|htmlspecialchars_decode:3}</td></tr>
+    <tr><td><b>{l s='Bank Address' mod='invoicebankinfo'}</b></td><td>{$bank_wire_address|escape:'htmlall':'UTF-8'}</td></tr>
     <tr><td></td><td></td></tr>
 </table>
