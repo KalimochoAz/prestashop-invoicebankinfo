@@ -24,8 +24,7 @@
 *  International Registered Trademark & Property of PrestaShop SA
 */
 
-if (!defined('_PS_VERSION_'))
-    exit;
+if (!defined('_PS_VERSION_')) exit;
 
 // BankWire Module have to be installed first
 
@@ -55,10 +54,10 @@ class InvoiceBankInfo extends Module
     public function install()
     {
 
-        if (!parent::install() || !Configuration::updateValue('INVOICE_BANK_INFO', 'installed') ||  !$this->registerHook('displayPDFInvoice') || !Configuration::updateValue('INVOICE_BANK_INFO_ENABLED', false))
-            return false;
-
-
+        if (!parent::install() ||
+            !Configuration::updateValue('INVOICE_BANK_INFO', 'installed') ||
+            !$this->registerHook('displayPDFInvoice') ||
+            !Configuration::updateValue('INVOICE_BANK_INFO_ENABLED', false)) return false;
         return true;
     }
 
@@ -67,8 +66,7 @@ class InvoiceBankInfo extends Module
         if (!parent::uninstall() ||
             !Configuration::deleteByName('INVOICE_BANK_INFO') ||
             !Configuration::deleteByName('INVOICE_BANK_INFO_ENABLED')
-        )
-        return false;
+        ) return false;
      
         return true;
     }
@@ -90,7 +88,7 @@ class InvoiceBankInfo extends Module
                        'bank_wire_address' => nl2br($bankWireAddress)
                    )
                );
-            return $this->display(__FILE__,'invoice_bank_details.tpl');
+            return $this->display(__FILE__, 'invoice_bank_details.tpl');
         }
     }
     
@@ -113,7 +111,8 @@ class InvoiceBankInfo extends Module
     
     // Function for basic field validation (present and neither empty nor only white space
     
-    public function isNullOrEmptyString($question){
+    public function isNullOrEmptyString($question) 
+    {
         return (!isset($question) || trim($question)==='');
     }
     
@@ -155,7 +154,6 @@ class InvoiceBankInfo extends Module
                 'title' => $this->l('Save'),
                 'class' => 'btn btn-default pull-right')
                 );
-         
         $helper = new HelperForm();
          
         // Module, token and currentIndex
