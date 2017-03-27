@@ -153,8 +153,8 @@ class InvoiceBankInfo extends Module
             ),
             'submit' => array(
                 'title' => $this->l('Save'),
-                'class' => 'btn btn-default pull-right');
-        );
+                'class' => 'btn btn-default pull-right')
+                );
          
         $helper = new HelperForm();
          
