@@ -61,7 +61,7 @@ class InvoiceBankInfo extends Module
             !$this->registerHook('displayPDFInvoice') ||
             !Configuration::updateValue('INVOICE_BANK_INFO_ENABLED', false)) {
             return false;
-            }
+        }
         return true;
     }
 
@@ -71,9 +71,8 @@ class InvoiceBankInfo extends Module
             !Configuration::deleteByName('INVOICE_BANK_INFO') ||
             !Configuration::deleteByName('INVOICE_BANK_INFO_ENABLED')
         ) {
-	        return false;
-	    }
-     
+            return false;
+        }
         return true;
     }
 
