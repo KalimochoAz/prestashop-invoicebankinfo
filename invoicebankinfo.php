@@ -26,7 +26,7 @@
 
 if (!defined('_PS_VERSION_')) {
     exit;
-    }
+}
 
 // BankWire Module have to be installed first
 
@@ -59,9 +59,9 @@ class InvoiceBankInfo extends Module
         if (!parent::install() ||
             !Configuration::updateValue('INVOICE_BANK_INFO', 'installed') ||
             !$this->registerHook('displayPDFInvoice') ||
-            !Configuration::updateValue('INVOICE_BANK_INFO_ENABLED', false)) { 
-	        return false;
-	        }
+            !Configuration::updateValue('INVOICE_BANK_INFO_ENABLED', false)) {
+            return false;
+            }
         return true;
     }
 
@@ -70,7 +70,9 @@ class InvoiceBankInfo extends Module
         if (!parent::uninstall() ||
             !Configuration::deleteByName('INVOICE_BANK_INFO') ||
             !Configuration::deleteByName('INVOICE_BANK_INFO_ENABLED')
-        ) return false;
+        ) {
+	        return false;
+	    }
      
         return true;
     }
@@ -104,8 +106,7 @@ class InvoiceBankInfo extends Module
             $invoice_info_enabled = Tools::getValue('INVOICE_BANK_INFO_ENABLED');
             if ($this->isNullOrEmptyString(Configuration::get('BANK_WIRE_DETAILS')) && $invoice_info_enabled == 1) {
                 $output .= $this->displayError($this->l('Please complete bank wire details, in bank wire module'));
-            }
-            else {
+            } else {
                 Configuration::updateValue('INVOICE_BANK_INFO_ENABLED', $invoice_info_enabled);
                 $output .= $this->displayConfirmation($this->l('Settings updated'));
             }
