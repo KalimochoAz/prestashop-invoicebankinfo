@@ -128,7 +128,7 @@ class InvoiceBankInfo extends Module
     public function displayForm()
     {
         // Array FieldForm
-        $fields_form = [];
+        $fields_form = array();
         
         // Get default language
         $default_lang = (int)Configuration::get('PS_LANG_DEFAULT');
