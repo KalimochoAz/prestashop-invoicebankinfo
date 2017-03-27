@@ -50,8 +50,6 @@ class InvoiceBankInfo extends Module
         $this->displayName = $this->l('Invoice bank info');
         $this->description = $this->l('Prints wire transfer info on the invoice.');
         $this->ps_versions_compliancy = array('min' => '1.5', 'max' => '1.6.99.99');
-        
-
     }
 
     public function install()
@@ -72,7 +70,7 @@ class InvoiceBankInfo extends Module
         )
         return false;
      
-      return true;
+        return true;
     }
 
     // Our module hook is DisplayPDFInvoice
@@ -94,32 +92,28 @@ class InvoiceBankInfo extends Module
                );
             return $this->display(__FILE__,'invoice_bank_details.tpl');
         }
-
     }
     
     public function getContent()
     {
         $output = null;
      
-        if (Tools::isSubmit('submit'.$this->name))
-        {
+        if (Tools::isSubmit('submit'.$this->name)) {
             $invoice_info_enabled = Tools::getValue('INVOICE_BANK_INFO_ENABLED');
-            if ($this->IsNullOrEmptyString(Configuration::get('BANK_WIRE_DETAILS')) && $invoice_info_enabled == 1) {
+            if ($this->isNullOrEmptyString(Configuration::get('BANK_WIRE_DETAILS')) && $invoice_info_enabled == 1) {
                 $output .= $this->displayError($this->l('Please complete bank wire details, in bank wire module'));
             }
             else {
                 Configuration::updateValue('INVOICE_BANK_INFO_ENABLED', $invoice_info_enabled);
-                $output .= $this->displayConfirmation($this->l('Settings updated'));  
-              
+                $output .= $this->displayConfirmation($this->l('Settings updated'));
             }
         }
         return $output.$this->displayForm();
     }
     
-    
     // Function for basic field validation (present and neither empty nor only white space
     
-    public function IsNullOrEmptyString($question){
+    public function isNullOrEmptyString($question){
         return (!isset($question) || trim($question)==='');
     }
     
@@ -159,8 +153,7 @@ class InvoiceBankInfo extends Module
             ),
             'submit' => array(
                 'title' => $this->l('Save'),
-                'class' => 'btn btn-default pull-right'
-            )
+                'class' => 'btn btn-default pull-right');
         );
          
         $helper = new HelperForm();
@@ -198,7 +191,4 @@ class InvoiceBankInfo extends Module
          
         return $helper->generateForm($fields_form);
     }
-    
-    
-
 }
