@@ -1,0 +1,19 @@
+{
+  "name": "prestashop/invoicebankinfo",
+  "description": "Print wire transfer info on the invoice",
+  "homepage": "https://www.fabvla.com",
+  "license": "AFL - Academic Free License (AFL 3.0)",
+  "authors": [
+    {
+      "name": "Fabvla Snc",
+      "email": "support@fabvla.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.3.2"
+  },
+  "config": {
+    "preferred-install": "dist"
+  },
+  "type": "prestashop-module"
+}
