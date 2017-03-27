@@ -13,10 +13,10 @@
 *
 *
 *  @author Fabvla snc <info@fabvla.com>
-*  @copyright  2007-2016 Fabvla snc
+*  @copyright  2017 Fabvla snc
 *  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *}
-
+    
 <table style="border: solid 1pt black; padding:0 10pt">
     <tr><td></td><td></td></tr>
     <tr><td><b>{l s='Account Holder Name' mod='invoicebankinfo'}</b></td><td>{$bank_wire_account}</td></tr>
