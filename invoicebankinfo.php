@@ -41,7 +41,7 @@ class InvoiceBankInfo extends Module
         $this->author = 'Fabvla';
         $this->tab = 'front_office_features';
         $this->need_instance = 0;
-        $this->version = '1.0.0';
+        $this->version = '1.0.1';
         $this->bootstrap = true;
         $this->_directory = dirname(__FILE__);
         $this->dependencies = array('bankwire');
@@ -85,7 +85,10 @@ class InvoiceBankInfo extends Module
         $bankWireAddress = Configuration::get('BANK_WIRE_ADDRESS');
         $bankWireInfoEnabled = Configuration::get('INVOICE_BANK_INFO_ENABLED');
 
-        if ($bankWireInfoEnabled) {
+        $order = new Order($params['object']->id_order);
+        $module_used = $order->module;
+
+        if ($bankWireInfoEnabled && $module_used == 'bankwire') {
                $this->smarty->assign(
                    array(
                        'bank_wire_account' => $bankWireAccount,
