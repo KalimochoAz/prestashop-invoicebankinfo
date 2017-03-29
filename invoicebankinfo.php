@@ -84,7 +84,6 @@ class InvoiceBankInfo extends Module
         $bankWireDetails = Configuration::get('BANK_WIRE_DETAILS');
         $bankWireAddress = Configuration::get('BANK_WIRE_ADDRESS');
         $bankWireInfoEnabled = Configuration::get('INVOICE_BANK_INFO_ENABLED');
-
         $order = new Order($params['object']->id_order);
         $module_used = $order->module;
 
