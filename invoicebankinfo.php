@@ -42,7 +42,7 @@ class InvoiceBankInfo extends Module
         if (_PS_VERSION_ > '1.6') {
             $this->module_dep = 'ps_wirepayment';
         }
-		$this->dependencies = array($this->module_dep);
+        $this->dependencies = array($this->module_dep);
         $this->displayName = $this->l('Invoice bank info');
         $this->description = $this->l('Prints wire transfer info on the invoice.');
         $this->ps_versions_compliancy = array('min' => '1.5', 'max' => '1.7.99.99');
