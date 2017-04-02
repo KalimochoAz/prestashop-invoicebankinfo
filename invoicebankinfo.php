@@ -10,25 +10,19 @@
 * http://opensource.org/licenses/osl-3.0.php
 * If you did not receive a copy of the license and are unable to
 * obtain it through the world-wide-web, please send an email
-* to license@prestashop.com so we can send you a copy immediately.
+* to support@fabvla.com so we can send you a copy immediately.
 *
-* DISCLAIMER
 *
-* Do not edit or add to this file if you wish to upgrade PrestaShop to newer
-* versions in the future. If you wish to customize PrestaShop for your
-* needs please refer to http://www.prestashop.com for more information.
-*
-*  @author    PrestaShop SA <contact@prestashop.com>
+*  @author    Fabvla <support@fabvla.com>
 *  @copyright  2017 Fabvla snc
 *  @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
-*  International Registered Trademark & Property of PrestaShop SA
 */
 
 if (!defined('_PS_VERSION_')) {
     exit;
 }
 
-// BankWire Module have to be installed first
+// BankWire Module (PS < 1.7) or PS_WIREPAYMENT (PS > 1.6) have to be installed first
 
 class InvoiceBankInfo extends Module
 {
@@ -41,16 +35,20 @@ class InvoiceBankInfo extends Module
         $this->author = 'Fabvla';
         $this->tab = 'front_office_features';
         $this->need_instance = 0;
-        $this->version = '1.0.1';
+        $this->version = '1.0.2';
         $this->bootstrap = true;
         $this->_directory = dirname(__FILE__);
-        $this->dependencies = array('bankwire');
+        $this->module_dep = 'bankwire';
+        if (_PS_VERSION_ > '1.6')
+        {
+            $this->module_dep = 'ps_wirepayment';
+        }
         
-        parent::__construct();
-
+		$this->dependencies = array($this->module_dep);
         $this->displayName = $this->l('Invoice bank info');
         $this->description = $this->l('Prints wire transfer info on the invoice.');
-        $this->ps_versions_compliancy = array('min' => '1.5', 'max' => '1.6.99.99');
+        $this->ps_versions_compliancy = array('min' => '1.5', 'max' => '1.7.99.99');
+        parent::__construct();
     }
 
     public function install()
@@ -87,7 +85,7 @@ class InvoiceBankInfo extends Module
         $order = new Order($params['object']->id_order);
         $module_used = $order->module;
 
-        if ($bankWireInfoEnabled && $module_used == 'bankwire') {
+        if ($bankWireInfoEnabled && $module_used == $this->module_dep) {
                $this->smarty->assign(
                    array(
                        'bank_wire_account' => $bankWireAccount,
