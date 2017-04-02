@@ -39,11 +39,9 @@ class InvoiceBankInfo extends Module
         $this->bootstrap = true;
         $this->_directory = dirname(__FILE__);
         $this->module_dep = 'bankwire';
-        if (_PS_VERSION_ > '1.6')
-        {
+        if (_PS_VERSION_ > '1.6') {
             $this->module_dep = 'ps_wirepayment';
         }
-        
 		$this->dependencies = array($this->module_dep);
         $this->displayName = $this->l('Invoice bank info');
         $this->description = $this->l('Prints wire transfer info on the invoice.');
