@@ -10,3 +10,8 @@ It is compatible with Prestashop 1.5+
 
 ### Changed
 Bank information are now displayed only if order was paid through bankwire payment module 
+
+[1.0.2] 02/04/2017 
+
+### Added
+PS 1.7 compatibility
